@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords" content="Bicycle, bicycle in Bangladesh" />
+		<meta name="description" content="We are selling the best quality products and We export all over bangladesh." />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<title>Yebo | Bicycle Theme</title>
+
+		<!-- Favicon Icon -->
+		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+		<!-- Stylesheet -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" media="all" />
+
+		<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+		<!-- [if lt ie 9]> <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif] -->
+	</head>
+	<body>
+		<div class="m1 menu">
+			<div id="menu-center">
+				<ul>
+					<li><a class="active" href="#home">Home</a>
+
+					</li>
+					<li><a href="#portfolio">Portfolio</a>
+
+					</li>
+					<li><a href="#about">About</a>
+
+					</li>
+					<li><a href="#contact">Contact</a>
+
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="home"></div>
+		<div id="portfolio"></div>
+		<div id="about"></div>
+		<div id="contact"></div>
+		
+		<script>
+			$(document).ready(function () {
+				$(document).on("scroll", onScroll);
+				
+				//smoothscroll
+				$('a[href^="#"]').on('click', function (e) {
+					e.preventDefault();
+					$(document).off("scroll");
+					
+					$('a').each(function () {
+						$(this).removeClass('active');
+					})
+					$(this).addClass('active');
+				  
+					var target = this.hash,
+						menu = target;
+					$target = $(target);
+					$('html, body').stop().animate({
+						'scrollTop': $target.offset().top+2
+					}, 500, 'swing', function () {
+						window.location.hash = target;
+						$(document).on("scroll", onScroll);
+					});
+				});
+			});
+
+			function onScroll(event){
+				var scrollPos = $(document).scrollTop();
+				$('#menu-center a').each(function () {
+					var currLink = $(this);
+					var refElement = $(currLink.attr("href"));
+					if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+						$('#menu-center ul li a').removeClass("active");
+						currLink.addClass("active");
+					}
+					else{
+						currLink.removeClass("active");
+					}
+				});
+			}
+		</script>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/modernizr.js"></script>
+	</body>
+</html>
